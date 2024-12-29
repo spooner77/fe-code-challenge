@@ -1,0 +1,58 @@
+.symbolsView__content {
+  display: flex;
+  gap: 8px;
+}
+
+.symbolsView__cards {
+  padding: 15px;
+  background-color: #e2e1e3;
+}
+
+.symbolsView__cards::-webkit-scrollbar {
+  display: none;
+}
+
+/* desktop */
+.symbolsView_desktop .symbolsView__content {
+  flex-flow: row-reverse nowrap;
+  align-items: flex-start;
+}
+
+.symbolsView_desktop .symbolsView__cards {
+  flex-grow: 2;
+}
+
+.symbolsView_desktop .symbolsView__chart {
+  width: fit-content;
+  height: fit-content;
+}
+
+@media (max-width: 1023px) {
+  .symbolsView_desktop .symbolsView__content {
+    flex-flow: column nowrap;
+    align-items: stretch;
+  }
+
+  .symbolsView_desktop .symbolsView__cards {
+    flex-grow: initial;
+  }
+
+  .symbolsView_desktop .symbolsView__chart {
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+}
+
+/* mobile */
+
+.symbolsView_mobile .symbolsView__content {
+  flex-flow: column nowrap;
+  align-items: stretch;
+}
+
+.symbolsView_mobile .symbolsView__chart {
+  padding: 10px;
+  box-sizing: border-box;
+  width: 100%;
+}

@@ -1,2 +1,1 @@
-// import { x } from './x';
-// export { x };
+export { formatCurrency } from './utils/formatCurrency';

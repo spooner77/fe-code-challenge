@@ -1,7 +1,19 @@
 .symbolCard {
-  border: 2px solid black; /* just for visibility, feel free to remove it */
-  margin: 10px; /* just for visibility, feel free to remove it */
-  padding: 10px; /* just for visibility, feel free to remove it */
+  border-radius: 5px;
+  overflow: hidden;
+  background: var(--colorWhite);
+}
+
+.symbolCard__symbol {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 14px;
+  box-sizing: border-box;
+  background: var(--colorDark);
+  font-size: 22px;
+  color: var(--colorWhite);
 }
 
 .symbolCard__shake {

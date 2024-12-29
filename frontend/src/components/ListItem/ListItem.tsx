@@ -16,7 +16,7 @@ type ListItemProps = {
 };
 const ListItem = ({ Icon, label, spacing }: ListItemProps) => {
   return (
-    <div style={{ justifyContent: spacing }} className={`listItem`}>
+    <div style={{ justifyContent: spacing }} className="listItem">
       <div className="listItem__icon">{Icon}</div>
       <div className="listItem__value">{label}</div>
     </div>
