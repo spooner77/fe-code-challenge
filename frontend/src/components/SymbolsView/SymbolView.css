@@ -1,15 +1,23 @@
+.symbolsView {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: hidden;
+}
+
 .symbolsView__content {
   display: flex;
+  flex: 1;
   gap: 8px;
+  overflow-y: hidden;
 }
 
 .symbolsView__cards {
   padding: 15px;
   background-color: #e2e1e3;
-}
-
-.symbolsView__cards::-webkit-scrollbar {
-  display: none;
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: none;
 }
 
 /* desktop */
@@ -19,22 +27,13 @@
 }
 
 .symbolsView_desktop .symbolsView__cards {
-  flex-grow: 2;
-}
-
-.symbolsView_desktop .symbolsView__chart {
-  width: fit-content;
-  height: fit-content;
+  height: 100%;
 }
 
 @media (max-width: 1023px) {
   .symbolsView_desktop .symbolsView__content {
     flex-flow: column nowrap;
     align-items: stretch;
-  }
-
-  .symbolsView_desktop .symbolsView__cards {
-    flex-grow: initial;
   }
 
   .symbolsView_desktop .symbolsView__chart {

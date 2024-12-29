@@ -8,7 +8,6 @@ import * as cn from 'classnames';
 
 const SymbolsView = () => {
   const isMobileDevice = isMobile();
-  console.log("isMobileDevice", isMobileDevice);
   const [activeSymbol, setActiveSymbol] = useState<null | string>(null);
   const handleSymbolClick = (symbolId: string) => {
     setActiveSymbol((s) => (s === symbolId ? null : symbolId));
