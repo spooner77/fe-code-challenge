@@ -1,7 +1,29 @@
 .symbolCard {
+  position: relative;
   border-radius: 5px;
-  overflow: hidden;
   background: var(--colorWhite);
+}
+
+.symbolCard__symbol_up::after {
+  content: "";
+  background: center / contain no-repeat url('../../assets/up.png');
+  position: absolute;
+  top: -16px;
+  right: -22px;
+  display: block;
+  width: 54px;
+  height: 42px;
+}
+
+.symbolCard__symbol_down::after {
+  content: "";
+  background: center / contain no-repeat url('../../assets/down.png');
+  position: absolute;
+  top: -16px;
+  right: -20px;
+  display: block;
+  width: 54px;
+  height: 42px;
 }
 
 .symbolCard__symbol {
@@ -9,6 +31,7 @@
   flex-flow: row nowrap;
   align-items: center;
   justify-content: flex-start;
+  border-radius: 5px 5px 0 0;
   padding-left: 14px;
   box-sizing: border-box;
   background: var(--colorDark);

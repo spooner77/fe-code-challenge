@@ -1,4 +1,4 @@
-import './symbolPrice.css';
+import './SymbolPrice.css';
 
 type SymbolCardProps = {
   price: string;
@@ -7,7 +7,7 @@ type SymbolCardProps = {
 const SymbolPrice = ({ price }: SymbolCardProps) => {
   return (
     <div className="symbolPrice">
-      <div className="symbolPrice__label">Price:</div>
+      <div className="symbolPrice__label">PRICE:</div>
       <div className="symbolPrice__price">{price}</div>
     </div>
   );

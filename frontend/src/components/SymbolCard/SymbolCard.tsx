@@ -4,8 +4,9 @@ import { ReactComponent as IndustryIcon } from '@/assets/industry.svg';
 import { ReactComponent as MarketCapIcon } from '@/assets/market_cap.svg';
 import { useAppSelector } from '@/hooks/redux';
 import ListItem from '@/components/ListItem';
-import SymbolPrice from '@/components/SymbolPrice';
+import SymbolPrice from './src/SymbolPrice';
 import { formatCurrency } from '@/lib';
+import * as cn from 'classnames';
 
 type SymbolCardProps = {
   id: string;
@@ -20,7 +21,13 @@ const SymbolCard = ({ id, onClick, price }: SymbolCardProps) => {
   };
   return (
     <div onClick={handleOnClick} className="symbolCard">
-      <div className="symbolCard__symbol">{id}</div>
+      <div className={cn(
+        'symbolCard__symbol',
+        {
+          symbolCard__symbol_up: trend === "UP",
+          symbolCard__symbol_down: trend === "DOWN",
+        },
+      )}>{id}</div>
       <SymbolPrice price={formatCurrency(price)} />
       <ListItem Icon={<CompanyIcon />} spacing="space-between" label={companyName} />
       <ListItem Icon={<IndustryIcon />} spacing="space-between" label={industry} />
