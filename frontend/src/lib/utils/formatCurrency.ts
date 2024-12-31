@@ -20,7 +20,7 @@ function formatAmount(value: number, maxDecimalCount: number): string {
   }
 
   if (value >= 1000) {
-    return `${toFixed(value/1000_000, maxDecimalCount)}K`;
+    return `${toFixed(value/1000, maxDecimalCount)}K`;
   }
 
   return toFixed(value, value < 10 ? 1 : 0).toString();
