@@ -1,4 +1,4 @@
-import './Selectable.css';
+import './selectable.css';
 import * as cn from 'classnames';
 
 type SelectableProps = {

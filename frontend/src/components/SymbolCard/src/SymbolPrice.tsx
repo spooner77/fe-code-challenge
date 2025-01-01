@@ -1,4 +1,4 @@
-import './SymbolPrice.css';
+import './symbolPrice.css';
 import { memo } from 'react';
 
 type SymbolCardProps = {

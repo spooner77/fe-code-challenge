@@ -1,4 +1,4 @@
-import './SymbolView.css';
+import './symbolView.css';
 import SymbolsGrid from '@/components/SymbolsGrid';
 import PriceChart from '@/components/PriceChart';
 import DesktopInfo from './src/DesktopInfo';

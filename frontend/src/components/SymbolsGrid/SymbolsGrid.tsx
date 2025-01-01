@@ -1,4 +1,4 @@
-import './SymbolGrid.css';
+import './symbolGrid.css';
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import SymbolCard from '../SymbolCard';
@@ -20,7 +20,7 @@ const SymbolsGrid = () => {
       'symbolGrid',
       {
         symbolGrid__symbolSelected: activeSymbol !== null,
-        symbolGrid__showCardInfo: !showCardInfo,
+        symbolGrid__hideCardInfo: !showCardInfo,
       },
     )}>
       {stockSymbols.map((id) => (

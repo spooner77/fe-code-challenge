@@ -58,7 +58,6 @@ const HighlightedSymbols = () => {
           <PerformanceCard
             change={symbol.change}
             key={index}
-            trend={symbol.trend}
             title={symbol.symbolId}
             volume={symbol.volume}
           />
