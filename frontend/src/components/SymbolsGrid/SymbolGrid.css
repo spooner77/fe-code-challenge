@@ -5,3 +5,15 @@
   grid-row-gap: 20px;
 }
 
+.symbolGrid > .selectableContainer {
+  transition: transform 0.5s;
+}
+
+.symbolGrid__symbolSelected > .selectableContainer {
+  transform: scale(0.96);
+}
+
+.symbolGrid__symbolSelected > .selectableContainer__selected {
+  transform: scale(1.03);
+}
+

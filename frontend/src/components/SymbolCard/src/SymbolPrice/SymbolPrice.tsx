@@ -1,4 +1,5 @@
 import './SymbolPrice.css';
+import { memo } from 'react';
 
 type SymbolCardProps = {
   price: string;
@@ -12,4 +13,4 @@ const SymbolPrice = ({ price }: SymbolCardProps) => {
     </div>
   );
 };
-export default SymbolPrice;
+export default memo(SymbolPrice);

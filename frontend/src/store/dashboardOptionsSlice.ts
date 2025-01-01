@@ -18,6 +18,10 @@ export const dashboardOptionsSlice = createSlice({
       state.showCardInfo = !state.showCardInfo;
     },
     setActiveSymbol: (state, action: PayloadAction<string | null>) => {
+      if (state.activeSymbol === action.payload) {
+        state.activeSymbol = null;
+        return;
+      }
       state.activeSymbol = action.payload;
     }
   }
