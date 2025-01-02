@@ -13,7 +13,7 @@
 }
 
 .symbolsView__cards {
-  padding: 15px;
+  padding: 20px;
   background-color: #e2e1e3;
   flex: 1;
   overflow-y: auto;

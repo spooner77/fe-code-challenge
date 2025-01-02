@@ -19,7 +19,7 @@ const SymbolsGrid = () => {
     <div className={cn(
       'symbolGrid',
       {
-        symbolGrid__symbolSelected: activeSymbol !== null,
+        symbolGrid__scaleDown: activeSymbol !== null,
         symbolGrid__hideCardInfo: !showCardInfo,
       },
     )}>
