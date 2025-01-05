@@ -1,54 +1,15 @@
 .symbolCard {
-  position: relative;
-  border-radius: 5px;
-  background: var(--colorWhite);
+  --scale: 1;
+  transition: transform 0.5s;
 }
 
-.symbolCard__symbolUp::after {
-  content: "";
-  background: center / contain no-repeat url('../../assets/up.png');
-  position: absolute;
-  top: -16px;
-  right: -22px;
-  display: block;
-  width: 54px;
-  height: 42px;
-}
-
-.symbolCard__symbolDown::after {
-  content: "";
-  background: center / contain no-repeat url('../../assets/down.png');
-  position: absolute;
-  top: -16px;
-  right: -20px;
-  display: block;
-  width: 54px;
-  height: 42px;
-}
-
-.symbolCard__symbol {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: flex-start;
-  border-radius: 5px 5px 0 0;
-  padding-left: 14px;
-  box-sizing: border-box;
-  background: var(--colorDark);
-  font-size: 22px;
-  color: var(--colorWhite);
+.symbolCard.symbolCard__selected {
+  --scale: 1.03;
+  transform: scale(var(--scale));
 }
 
 .symbolCard__shake {
-  animation: shake 0.62s cubic-bezier(0.36, 0.07, 0.19, 0.97) both, glowGreed 1.5s linear none;
-}
-
-.symbolCard__glowRed {
-  animation: glowRed 1.5s linear none;
-}
-
-.symbolCard__glowGreen {
-  animation: glowGreed 1.5s linear none;
+  animation: shake 0.62s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
 
 /*
@@ -59,12 +20,12 @@
 @keyframes shake {
   10%,
   90% {
-    transform: translateX(-2px);
+    transform: scale(var(--scale)) translateX(-2px);
   }
 
   20%,
   80% {
-    transform: translateX(4px);
+    transform: scale(var(--scale)) translateX(4px);
   }
 
   25%,
@@ -73,7 +34,7 @@
   55%,
   65%,
   75% {
-    transform: translateX(-6px);
+    transform: scale(var(--scale)) translateX(-6px);
   }
 
   30%,
@@ -81,37 +42,6 @@
   50%,
   60%,
   70% {
-    transform: translateX(6px);
-  }
-}
-
-@keyframes glowGreed {
-  0% {
-    box-shadow: 0 0 0 0 #87BE89;
-  }
-  10% {
-    box-shadow: 0 0 15px 3px #87BE89;
-  }
-  90% {
-    box-shadow: 0 0 15px 3px #87BE89;
-  }
-  100% {
-    box-shadow: 0 0 0 0 #87BE89;
-  }
-}
-
-
-@keyframes glowRed {
-  0% {
-    box-shadow: 0 0 0 0 #E68E88;
-  }
-  10% {
-    box-shadow: 0 0 15px 3px #E68E88;
-  }
-  90% {
-    box-shadow: 0 0 15px 3px #E68E88;
-  }
-  100% {
-    box-shadow: 0 0 0 0 #E68E88;
+    transform: scale(var(--scale)) translateX(6px);
   }
 }

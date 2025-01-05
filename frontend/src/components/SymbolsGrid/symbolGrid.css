@@ -9,7 +9,7 @@
   transform: scale(0.96);
 }
 
-.symbolGrid__hideCardInfo .symbolCard > .listItem {
+.symbolGrid__hideCardInfo .symbolCard .listItem {
   display: none;
 }
 
