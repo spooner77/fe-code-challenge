@@ -7,12 +7,13 @@ import ListItem from '@/components/ListItem';
 import SymbolPrice from './src/SymbolPrice';
 import { formatCurrency } from '@/lib';
 import * as cn from 'classnames';
-import { AnimationEvent, memo, useRef, useState } from 'react';
+import { AnimationEvent, memo, useReducer, useRef } from 'react';
 import { setActiveSymbol } from '@/store/dashboardOptionsSlice';
 import ShadowContainer from '@/components/SymbolCard/src/ShadowContainer';
 import Symbol from '@/components/SymbolCard/src/Symbol';
+import ShakeAnimationContainer from '@/components/SymbolCard/src/ShakeAnimationContainer';
 
-type AnimationType = 'shake'  | undefined;
+type AnimationType = 'shake' | undefined;
 
 function getAnimationType(price: number | undefined, prevPrice: number | undefined): AnimationType {
   if (prevPrice === undefined || price === undefined) {
@@ -43,27 +44,26 @@ function getGlowEffectType(price: number | undefined, prevPrice: number | undefi
 }
 
 function useSymbolCardAnimation(price: number | undefined): [AnimationType, GlowEffectType, (event: AnimationEvent) => void] {
+  const glowAnimationTimer = useRef<number | undefined>(undefined);
   const prevPrice = useRef<number | undefined>(undefined);
   const animation = useRef<AnimationType>(undefined);
   const glowEffect = useRef<GlowEffectType>(undefined);
-  const [count, rerender] = useState<number>(0);
+  const [, forceUpdate] = useReducer(count => count + 1, 0);
 
   const onAnimationEnd = (event: AnimationEvent) => {
     /**
      *  Shake animation always contains green glow effect.
      *  Glow effect lasts longer so we can clean both animations together to avoid re-renders
      */
-    if (event.animationName === 'glow') {
+    if (event.animationName === 'shake') {
       animation.current = undefined;
-      glowEffect.current = undefined;
-      /**
-       * We need to remove animation class to show animation if the price is increased of reduced twice
-       */
-      const next = count + 1;
-      rerender(next > 100 ? 0 : next);
+      forceUpdate();
     }
   };
 
+  /**
+   * return the same value if price is the same
+   */
   if (price === prevPrice.current) {
     return [animation.current, glowEffect.current, onAnimationEnd];
   }
@@ -71,6 +71,22 @@ function useSymbolCardAnimation(price: number | undefined): [AnimationType, Glow
   animation.current = getAnimationType(price, prevPrice.current);
   glowEffect.current = getGlowEffectType(price, prevPrice.current);
   prevPrice.current = price;
+
+  /**
+   * create timer to clean glow effect
+   */
+  if (glowEffect.current !== undefined) {
+    if (glowAnimationTimer.current) {
+      clearTimeout(glowAnimationTimer.current);
+    }
+
+    glowAnimationTimer.current = window.setTimeout(() => {
+      glowEffect.current = undefined;
+      glowAnimationTimer.current = undefined;
+      forceUpdate();
+    }, 2000);
+  }
+
   return [animation.current, glowEffect.current, onAnimationEnd];
 }
 
@@ -92,16 +108,17 @@ const SymbolCard = ({ id, selected }: SymbolCardProps) => {
 
   return (
     <div onClick={handleClick} onAnimationEnd={onAnimationEnd} className={cn('symbolCard', {
-      symbolCard__shake: animation === 'shake',
       symbolCard__selected: selected
     })}>
-      <ShadowContainer selected={selected} glowEffect={glowEffect} >
-        <Symbol id={id} trend={trend ?? undefined} />
-        <SymbolPrice price={formatCurrency(price)} />
-        <ListItem iconSrc={companyIcon} spacing="space-between" label={companyName} />
-        <ListItem iconSrc={industryIcon} spacing="space-between" label={industry} />
-        <ListItem iconSrc={marketCapIcon} spacing="space-between" label={formatCurrency(marketCap)} />
-      </ShadowContainer>
+      <ShakeAnimationContainer animate={animation === 'shake'}>
+        <ShadowContainer selected={selected} glowEffect={glowEffect}>
+          <Symbol id={id} trend={trend ?? undefined} />
+          <SymbolPrice price={formatCurrency(price)} />
+          <ListItem iconSrc={companyIcon} spacing="space-between" label={companyName} />
+          <ListItem iconSrc={industryIcon} spacing="space-between" label={industry} />
+          <ListItem iconSrc={marketCapIcon} spacing="space-between" label={formatCurrency(marketCap)} />
+        </ShadowContainer>
+      </ShakeAnimationContainer>
     </div>
   );
 };

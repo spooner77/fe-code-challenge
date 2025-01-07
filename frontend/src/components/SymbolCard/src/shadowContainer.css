@@ -21,7 +21,7 @@
   left: 0;
   filter: blur(7px);
   background-color: var(--shadowColor);
-  transition: background-color 0.3s;
+  transition: background-color 0.5s;
   z-index: -1;
 }
 
@@ -30,26 +30,9 @@
 }
 
 .shadowContainer__priceUp::after {
-  --glowEffectColor: var(--priceUpColor);
-  animation: glow 2s linear both;
+  --shadowColor: var(--priceUpColor);
 }
 
 .shadowContainer__priceDown::after {
-  --glowEffectColor: var(--priceDownColor);
-  animation: glow 2s linear both;
-}
-
-@keyframes glow {
-  0% {
-    background-color: var(--shadowColor);
-  }
-  20% {
-    background-color: var(--glowEffectColor);
-  }
-  80% {
-    background-color: var(--glowEffectColor);
-  }
-  100% {
-    background-color: var(--shadowColor);
-  }
+  --shadowColor: var(--priceDownColor);
 }
