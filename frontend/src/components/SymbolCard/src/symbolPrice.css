@@ -1,0 +1,17 @@
+.symbolPrice {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: end;
+  justify-content: space-between;
+  padding: 0 5px;
+}
+
+.symbolPrice__label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.symbolPrice__price {
+  font-size: 28px;
+  font-weight: bolder;
+}

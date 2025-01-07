@@ -1,0 +1,38 @@
+.shadowContainer {
+  --priceUpColor: #87BE89;
+  --priceDownColor: #E68E88;
+  --shadowColor: transparent;
+  --glowEffectColor: transparent;
+  --selectedColor: grey;
+  position: relative;
+  background: var(--colorWhite);
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+}
+
+.shadowContainer::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: calc(100% + 3px);
+  height: calc(100% + 3px);
+  top: 0;
+  left: 0;
+  filter: blur(7px);
+  background-color: var(--shadowColor);
+  transition: background-color 0.5s;
+  z-index: -1;
+}
+
+.shadowContainer__selected::after {
+  --shadowColor: var(--selectedColor);
+}
+
+.shadowContainer__priceUp::after {
+  --shadowColor: var(--priceUpColor);
+}
+
+.shadowContainer__priceDown::after {
+  --shadowColor: var(--priceDownColor);
+}

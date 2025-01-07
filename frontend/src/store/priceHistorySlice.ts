@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '@/store/index';
 
-type historyEntry = {
+export type historyEntry = {
   time: number;
   price: number;
 };
